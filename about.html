@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0f0f11">
+  <title>Nosotros · ALTOBYTE SOLUTIONS</title>
+  <meta name="description" content="Quiénes somos en ALTOBYTE SOLUTIONS. Gestión, imagen y automatización para tu negocio. Rosario y remoto.">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:#0f0f11;
+      --panel:#1a1c1f;
+      --panel-alpha:rgba(26,28,31,.6);
+      --border:rgba(0,212,255,.4);
+      --txt:#ffffff;
+      --sub:#8b8f9a;
+      --accent:#00d4ff;
+      --radius-xl:2rem;
+      --radius-lg:1rem;
+      --radius-md:.75rem;
+      --radius-sm:.5rem;
+    }
+
+    * {
+      box-sizing:border-box;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+
+    html {
+      scroll-behavior:smooth;
+      background:var(--bg);
+      color:var(--txt);
+      font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+    }
+    body {
+      margin:0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(0,212,255,.18) 0%, transparent 60%),
+        radial-gradient(circle at 80% 10%, rgba(255,0,122,.12) 0%, transparent 60%),
+        radial-gradient(circle at 50% 80%, rgba(0,212,255,.07) 0%, transparent 60%),
+        var(--bg);
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+
+    img,svg {max-width:100%;display:block}
+
+    h1,h2,h3,h4,h5,h6 {
+      font-family:'Rajdhani',system-ui,sans-serif;
+      margin:0 0 .5em;
+      line-height:1.1;
+      color:var(--txt);
+      letter-spacing:-0.03em;
+    }
+    h1 {font-size:clamp(2rem,1.2rem+2vw,3rem);font-weight:700;}
+    h2 {font-size:clamp(1.5rem,1rem+1vw,2rem);font-weight:600;}
+    h3 {font-size:1.25rem;font-weight:600;}
+    p {margin:0 0 1rem;color:var(--sub);line-height:1.55;font-size:1rem;}
+    strong {color:var(--txt);font-weight:600;}
+
+    a {color:var(--accent);text-decoration:none}
+    a:hover {text-decoration:underline}
+
+    .wrapper {
+      width:100%;
+      max-width:1300px;
+      margin:0 auto;
+      padding:0 1.25rem;
+      position:relative;
+      z-index:2;
+    }
+
+    /* NAV */
+    header.navbar {
+      position:fixed;
+      top:0;left:0;right:0;
+      z-index:1000;
+      background:rgba(15,15,17,.4);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(0,212,255,.15);
+    }
+    .nav-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:.75rem 1.25rem;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      font-family:'Rajdhani',system-ui,sans-serif;
+      font-weight:700;
+      font-size:1rem;
+      line-height:1;
+      color:var(--txt);
+      letter-spacing:-0.03em;
+      text-decoration:none;
+    }
+    .brand-icon{
+      width:2rem;
+      height:2rem;
+      border-radius:.75rem;
+      background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.15) 0%,rgba(255,255,255,0) 60%), #0f0f11;
+      border:1px solid var(--border);
+      box-shadow:0 0 20px rgba(0,212,255,.6),0 0 60px rgba(0,212,255,.2);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:.8rem;
+      font-weight:700;
+      color:#fff;
+      margin-right:.6rem;
+      position:relative;
+    }
+    .brand-icon span b{color:var(--accent);}
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:1.25rem;
+      font-size:.9rem;
+      font-weight:500;
+    }
+    .nav-links a{
+      color:var(--txt);
+      text-decoration:none;
+      position:relative;
+      padding:.4rem .2rem;
+    }
+    .nav-links a:after{
+      content:'';
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:0;
+      height:2px;
+      background:var(--accent);
+      border-radius:2px;
+      transform:scaleX(0);
+      transform-origin:left;
+      transition:transform .2s;
+    }
+    .nav-links a:hover:after{
+      transform:scaleX(1);
+    }
+
+    .burger{
+      background:none;
+      border:0;
+      padding:.5rem;
+      border-radius:.5rem;
+      display:none;
+      color:var(--txt);
+    }
+    .burger svg{width:24px;height:24px;}
+
+    @media(max-width:800px){
+      .nav-links{
+        position:absolute;
+        top:100%;
+        right:1.25rem;
+        background:var(--panel);
+        border:1px solid var(--border);
+        box-shadow:0 30px 100px rgba(0,0,0,.8),0 0 60px rgba(0,212,255,.2);
+        border-radius:1rem;
+        padding:1rem 1.25rem;
+        flex-direction:column;
+        align-items:flex-start;
+        min-width:200px;
+        opacity:0;
+        pointer-events:none;
+        transform:translateY(-10px);
+        transition:all .18s;
+      }
+      .nav-links a{width:100%;}
+      .nav-links.show{
+        opacity:1;
+        pointer-events:auto;
+        transform:translateY(0);
+      }
+      .burger{display:block;}
+    }
+
+    /* HERO ABOUT */
+    .hero-about{
+      position:relative;
+      padding-top:6rem;
+      padding-bottom:4rem;
+      text-align:center;
+      overflow:hidden;
+    }
+    #grid-bg{
+      position:absolute;
+      z-index:0;
+      inset:0;
+      width:100%;
+      height:100%;
+    }
+    .hero-inner{
+      position:relative;
+      z-index:2;
+      max-width:800px;
+      margin:0 auto;
+    }
+    .hero-eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:.5rem;
+      font-size:.75rem;
+      line-height:1;
+      font-weight:500;
+      color:var(--accent);
+      background:rgba(0,212,255,.08);
+      border:1px solid var(--border);
+      padding:.5rem .75rem;
+      border-radius:.75rem;
+      box-shadow:0 0 40px rgba(0,212,255,.4);
+    }
+    .hero-eyebrow-dot{
+      width:.5rem;
+      height:.5rem;
+      border-radius:999px;
+      background:var(--accent);
+      box-shadow:0 0 12px rgba(0,212,255,.8);
+    }
+    .hero-inner h1{
+      margin:1rem 0 .75rem;
+      font-size:clamp(2rem,1rem+1.5vw,2.75rem);
+    }
+    .hero-inner p{
+      max-width:620px;
+      margin:0 auto 2rem;
+      font-size:1rem;
+      line-height:1.5;
+      color:var(--sub);
+    }
+
+    /* SECTION WRAPPER */
+    section{
+      position:relative;
+      padding:3rem 0;
+    }
+    .section-head{
+      text-align:center;
+      max-width:760px;
+      margin:0 auto 2rem;
+    }
+    .section-eyebrow{
+      display:inline-block;
+      font-size:.7rem;
+      text-transform:uppercase;
+      font-weight:600;
+      letter-spacing:.1em;
+      color:var(--accent);
+      margin-bottom:.75rem;
+    }
+
+    /* ABOUT CORE BLOCK */
+    .about-wrapper{
+      background:var(--panel-alpha);
+      border:1px solid var(--border);
+      border-radius:var(--radius-xl);
+      padding:2rem 1.5rem;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:2rem;
+      align-items:center;
+      box-shadow:0 40px 180px rgba(0,0,0,.9),0 0 120px rgba(0,212,255,.3);
+      position:relative;
+      overflow:hidden;
+    }
+    @media(max-width:900px){
+      .about-wrapper{grid-template-columns:1fr;}
+    }
+
+    .about-bio h3{
+      font-size:1.4rem;
+      line-height:1.2;
+      font-family:'Rajdhani',system-ui,sans-serif;
+      margin-bottom:.75rem;
+    }
+    .about-bio p{
+      font-size:.9rem;
+      line-height:1.5;
+      color:var(--sub);
+    }
+    .about-highlights{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));
+      gap:1rem;
+      margin-top:1.5rem;
+    }
+    .mini-card{
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:var(--radius-md);
+      padding:1rem;
+      font-size:.8rem;
+      line-height:1.4;
+      position:relative;
+    }
+    .mini-card strong{
+      display:block;
+      font-size:1rem;
+      font-weight:600;
+      color:var(--txt);
+      margin-bottom:.25rem;
+      text-shadow:0 0 12px rgba(0,212,255,.6);
+    }
+
+    .about-visual{
+      position:relative;
+      border-radius:var(--radius-lg);
+      background:
+        radial-gradient(circle at 20% 20%,rgba(0,212,255,.15) 0%,transparent 70%),
+        radial-gradient(circle at 80% 80%,rgba(255,0,122,.2) 0%,transparent 60%),
+        #0f0f11;
+      border:1px solid var(--border);
+      box-shadow:0 30px 140px rgba(0,0,0,.9),0 0 140px rgba(0,212,255,.35);
+      min-height:220px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:2rem 1rem;
+      font-family:'Rajdhani',system-ui,sans-serif;
+      font-weight:600;
+      color:var(--txt);
+      letter-spacing:-0.03em;
+    }
+    .about-visual .tag{
+      font-size:.7rem;
+      font-weight:500;
+      color:var(--accent);
+      background:rgba(0,212,255,.08);
+      border:1px solid var(--border);
+      border-radius:.5rem;
+      padding:.4rem .6rem;
+      display:inline-block;
+      margin-bottom:.5rem;
+      box-shadow:0 0 20px rgba(0,212,255,.6);
+    }
+    .about-visual .bigline{
+      font-size:1.4rem;
+      line-height:1.2;
+      margin-bottom:.5rem;
+    }
+    .about-visual .subline{
+      font-size:.8rem;
+      line-height:1.4;
+      color:var(--sub);
+      max-width:270px;
+      margin:0 auto;
+    }
+
+    /* PROCESS SECTION */
+    .process-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));
+      gap:1.5rem;
+    }
+    .proc-card{
+      background:rgba(26,28,31,.6);
+      border:1px solid var(--border);
+      border-radius:var(--radius-lg);
+      box-shadow:0 30px 140px rgba(0,0,0,.8),0 0 120px rgba(0,212,255,.3);
+      padding:1.5rem 1.25rem;
+      position:relative;
+    }
+    .proc-num{
+      min-width:2rem;
+      height:2rem;
+      border-radius:.75rem;
+      background:#0f0f11;
+      border:1px solid var(--border);
+      color:var(--accent);
+      font-size:.8rem;
+      font-weight:600;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 0 20px rgba(0,212,255,.6);
+      margin-bottom:1rem;
+    }
+    .proc-card h4{
+      font-family:'Inter',system-ui,sans-serif;
+      font-size:1rem;
+      font-weight:600;
+      color:var(--txt);
+      margin:.2rem 0 .5rem;
+      line-height:1.3;
+    }
+    .proc-card p{
+      font-size:.8rem;
+      line-height:1.45;
+      color:var(--sub);
+      margin:0;
+    }
+
+    /* CONTACT SECTION */
+    .contact-wrapper{
+      background:var(--panel-alpha);
+      border:1px solid var(--border);
+      border-radius:var(--radius-xl);
+      padding:2rem 1.5rem;
+      box-shadow:0 40px 180px rgba(0,0,0,.9),0 0 140px rgba(0,212,255,.4);
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:2rem;
+    }
+    @media(max-width:900px){
+      .contact-wrapper{grid-template-columns:1fr;}
+    }
+
+    .contact-left h3{
+      font-family:'Rajdhani',system-ui,sans-serif;
+      font-size:1.4rem;
+      font-weight:600;
+      line-height:1.2;
+      margin-bottom:.75rem;
+    }
+    .contact-left p{
+      font-size:.9rem;
+      line-height:1.5;
+      color:var(--sub);
+      margin-bottom:1rem;
+    }
+    .contact-ways{
+      display:grid;
+      gap:.75rem;
+      font-size:.8rem;
+      line-height:1.4;
+    }
+    .contact-way{
+      display:flex;
+      align-items:flex-start;
+      gap:.75rem;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:.75rem;
+      padding:.75rem .9rem;
+    }
+    .contact-icon{
+      width:2rem;
+      height:2rem;
+      border-radius:.6rem;
+      background:#0f0f11;
+      border:1px solid var(--border);
+      box-shadow:0 0 20px rgba(0,212,255,.6);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-shrink:0;
+    }
+    .contact-icon svg{
+      width:1rem;
+      height:1rem;
+      stroke:var(--accent);
+    }
+    .contact-text strong{
+      color:var(--txt);
+      font-weight:600;
+      font-size:.8rem;
+      display:block;
+      line-height:1.3;
+    }
+    .contact-text span{
+      color:var(--sub);
+      font-size:.8rem;
+      line-height:1.3;
+      display:block;
+    }
+
+    form.contact-form{
+      display:grid;
+      gap:.75rem;
+    }
+    .field-group{
+      display:grid;
+      gap:.4rem;
+    }
+    .field-group label{
+      font-size:.75rem;
+      color:var(--txt);
+      font-weight:500;
+    }
+    .field-group input,
+    .field-group textarea{
+      background:#0f0f11;
+      color:var(--txt);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:var(--radius-md);
+      font-size:.85rem;
+      padding:.75rem .75rem;
+      font-family:'Inter',system-ui,sans-serif;
+      line-height:1.3;
+      outline:none;
+      box-shadow:0 0 20px rgba(0,212,255,.15);
+    }
+    .field-group input:focus,
+    .field-group textarea:focus{
+      border-color:var(--accent);
+      box-shadow:0 0 16px rgba(0,212,255,.6);
+    }
+    .field-group textarea{
+      min-height:120px;
+      resize:vertical;
+    }
+    .form-row-2{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:.75rem;
+    }
+    @media(max-width:500px){
+      .form-row-2{grid-template-columns:1fr;}
+    }
+
+    .send-btn{
+      border:0;
+      border-radius:var(--radius-md);
+      background:radial-gradient(circle at 20% 20%,rgba(255,255,255,.25) 0%,rgba(255,255,255,0) 60%), var(--accent);
+      color:#0f0f11;
+      font-weight:600;
+      font-size:.9rem;
+      padding:.9rem 1rem;
+      cursor:pointer;
+      box-shadow:0 20px 60px rgba(0,212,255,.5),0 0 80px rgba(0,212,255,.3);
+    }
+    .send-hint{
+      font-size:.7rem;
+      line-height:1.4;
+      color:var(--sub);
+      text-align:center;
+    }
+
+    /* FOOTER */
+    footer{
+      padding:3rem 0 5rem;
+      text-align:center;
+      font-size:.75rem;
+      color:var(--sub);
+    }
+    .footer-brand{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-family:'Rajdhani',system-ui,sans-serif;
+      font-weight:700;
+      font-size:1rem;
+      color:var(--txt);
+      gap:.5rem;
+      letter-spacing:-0.03em;
+      margin-bottom:.75rem;
+    }
+    .footer-brand-icon{
+      width:1.8rem;
+      height:1.8rem;
+      border-radius:.6rem;
+      background:#0f0f11;
+      border:1px solid var(--border);
+      box-shadow:0 0 20px rgba(0,212,255,.6),0 0 60px rgba(0,212,255,.2);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:.7rem;
+      font-weight:700;
+      color:#fff;
+    }
+    footer a{color:var(--accent);text-decoration:none;}
+    footer a:hover{text-decoration:underline;}
+
+    /* reveal */
+    .hidden-init{
+      opacity:0;
+      transform:translateY(40px) scale(.98);
+      transition:all .5s cubic-bezier(.16,1,.3,1);
+    }
+    .reveal{
+      opacity:1 !important;
+      transform:translateY(0) scale(1) !important;
+      box-shadow:0 0 80px rgba(0,212,255,.4),0 60px 200px rgba(0,0,0,.9);
+    }
+
+    /* ===========================
+       HOVER CARD FX ALTOBYTE
+       =========================== */
+    @property --angle {
+      syntax: "<angle>";
+      inherits: false;
+      initial-value: 0deg;
+    }
+
+    .fx-card-hover {
+      position: relative;
+      background: var(--panel-alpha);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      box-shadow: 0 30px 120px rgba(0,0,0,.8), 0 0 80px rgba(0,212,255,.25);
+      transition: transform .18s cubic-bezier(.16,1,.3,1),
+                  box-shadow .18s cubic-bezier(.16,1,.3,1);
+      will-change: transform, box-shadow;
+      transform-style: preserve-3d;
+      isolation: isolate;
+    }
+
+    .fx-card-hover::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: conic-gradient(
+        from var(--angle),
+        rgba(0,212,255,1) 0deg,
+        rgba(0,212,255,.2) 60deg,
+        rgba(255,0,122,.3) 120deg,
+        rgba(0,0,0,0) 180deg,
+        rgba(0,212,255,.6) 240deg,
+        rgba(0,212,255,1) 360deg
+      );
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+              mask-composite: exclude;
+      opacity: 0;
+      filter: drop-shadow(0 0 12px rgba(0,212,255,.8))
+              drop-shadow(0 0 32px rgba(0,212,255,.4));
+      transition: opacity .18s cubic-bezier(.16,1,.3,1);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .fx-card-hover:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow:
+        0 50px 180px rgba(0,0,0,.9),
+        0 0 100px rgba(0,212,255,.45),
+        0 0 60px rgba(255,0,122,.25);
+    }
+    .fx-card-hover:hover::before {
+      opacity: 1;
+      animation: rotateBorder 2.5s linear infinite;
+    }
+    @keyframes rotateBorder {
+      to { --angle: 360deg; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="nav-inner wrapper">
+    <a class="brand" href="index.html#inicio">
+      <div class="brand-icon"><span><b>A</b>B</span></div>
+      <div>
+        <div style="line-height:1;font-size:.9rem;">ALTOBYTE <span style="color:var(--accent)">SOLUTIONS</span></div>
+        <div style="color:var(--sub);font-size:.6rem;font-weight:500;line-height:1.2;">Tecnología · Imagen · Automatización</div>
+      </div>
+    </a>
+
+    <nav class="nav-links" id="mobileMenu">
+      <a href="index.html#inicio">Inicio</a>
+      <a href="services.html">Servicios</a>
+      <a href="index.html#automatizacion">Automatización</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <button class="burger" id="burgerBtn" aria-label="Menú">
+      <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</header>
+
+<section class="hero-about">
+  <canvas id="grid-bg"></canvas>
+  <div class="hero-inner wrapper hidden-init">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-dot"></div>
+      <span>ALTOBYTE SOLUTIONS</span>
+      <span>Equipo fundador</span>
+    </div>
+    <h1>Somos tu equipo tecnológico y creativo</h1>
+    <p>
+      No vendemos software suelto. Tomamos tu negocio, lo ordenamos, lo hacemos ver profesional y después lo ponemos a vender con IA. <strong>Somos Esteban y Evelyn.</strong> Hacemos que las cosas pasen.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="wrapper about-wrapper hidden-init reveal fx-card-hover">
+    <div class="about-bio">
+      <h3>Lo nuestro es simple: resultados</h3>
+      <p>
+        • ERP para que sepas qué stock tenés, quién vendió qué y quién te debe. <br>
+        • Automatización con bots de WhatsApp para tomar pedidos y recordar pagos. <br>
+        • Marca y presencia digital para que parezcas empresa grande, aunque seas dos personas y un local.
+      </p>
+      <p>
+        No te hacemos perder tiempo. Te preguntamos qué te está rompiendo la cabeza hoy y atacamos eso primero.
+      </p>
+
+      <div class="about-highlights">
+        <div class="mini-card">
+          <strong>Gestión</strong>
+          Control de stock, caja, ventas, cuentas corrientes, reportes.
+        </div>
+        <div class="mini-card">
+          <strong>Imagen</strong>
+          Logo, web, flyers, catálogo. Se ve serio, vende más.
+        </div>
+        <div class="mini-card">
+          <strong>Automatización</strong>
+          Bots que atienden, cobran, confirman pedidos y no se olvidan.
+        </div>
+      </div>
+    </div>
+
+    <div class="about-visual">
+      <div>
+        <div class="tag">ALTOBYTE SOLUTIONS</div>
+        <div class="bigline">De la PC al ERP, del logo al bot.</div>
+        <div class="subline">
+          Esteban (sistemas & IA)<br>
+          Evelyn (diseño & presencia visual)<br><br>
+          Rosario / Remoto LATAM
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrapper">
+    <div class="section-head hidden-init">
+      <div class="section-eyebrow">Cómo trabajamos</div>
+      <h2>Proceso en 3 pasos</h2>
+      <p>Vos hablás con nosotros. No hay “te paso con soporte”. No hay tickets eternos.</p>
+    </div>
+
+    <div class="process-grid">
+      <div class="proc-card hidden-init fx-card-hover">
+        <div class="proc-num">1</div>
+        <h4>Auditamos rápido</h4>
+        <p>
+          Miramos cómo estás trabajando hoy. Qué anotás a mano. Qué se te pierde. Dónde se te va la plata o el tiempo.
+        </p>
+      </div>
+      <div class="proc-card hidden-init fx-card-hover">
+        <div class="proc-num">2</div>
+        <h4>Armamos el núcleo</h4>
+        <p>
+          Te dejamos andando el bloque más urgente: stock, control de caja, panel de deuda, bot de pedidos, web con presencia real… lo que te quema ahora.
+        </p>
+      </div>
+      <div class="proc-card hidden-init fx-card-hover">
+        <div class="proc-num">3</div>
+        <h4>Escalamos</h4>
+        <p>
+          Sumamos automatizaciones, reportes diarios, recordatorios de pago, branding más pulido, catálogo digital, etc. A tu ritmo, sin romper tu día a día.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrapper">
+    <div class="section-head hidden-init">
+      <div class="section-eyebrow">Contacto</div>
+      <h2>Contanos qué querés resolver ya</h2>
+      <p>Hacemos una primera bajada sin compromiso. Si tiene sentido, seguimos. Si no, te llevás claridad igual.</p>
+    </div>
+
+    <div class="contact-wrapper hidden-init reveal fx-card-hover">
+      <div class="contact-left">
+        <h3>Hablemos</h3>
+        <p>
+          Rosario y alrededores. También remoto para toda Latinoamérica.
+        </p>
+
+        <div class="contact-ways">
+          <div class="contact-way">
+            <div class="contact-icon">
+              <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                <path d="M3 5h18v14H3z"/>
+                <path d="M3 7l9 6 9-6"/>
+              </svg>
+            </div>
+            <div class="contact-text">
+              <strong>Mail</strong>
+              <span>altobytesolutions1@gmail.com</span>
+            </div>
+          </div>
+
+          <div class="contact-way">
+            <div class="contact-icon">
+              <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.13A19.5 19.5 0 0 1 3.21 8.81 19.79 19.79 0 0 1 .08 2.28 2 2 0 0 1 2.06.1h3a2 2 0 0 1 2 1.72c.12.81.37 1.6.72 2.34a2 2 0 0 1-.45 2.11L6.1 7.91a16 16 0 0 0 8 8l1.61-1.22a2 2 0 0 1 2.11-.45 11.36 11.36 0 0 0 2.34.72A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </div>
+            <div class="contact-text">
+              <strong>WhatsApp</strong>
+              <span>+54 9 341 601 8944</span>
+            </div>
+          </div>
+
+          <div class="contact-way">
+            <div class="contact-icon">
+              <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M2 12h20"/>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              </svg>
+            </div>
+            <div class="contact-text">
+              <strong>Zona</strong>
+              <span>Rosario y alrededores / Remoto Latinoamérica</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form" id="contactForm">
+        <div class="form-row-2">
+          <div class="field-group">
+            <label for="nombre">Tu nombre</label>
+            <input id="nombre" name="nombre" type="text" placeholder="Ej: Laura / Martín / Verónica" required>
+          </div>
+          <div class="field-group">
+            <label for="empresa">Empresa / Rubro</label>
+            <input id="empresa" name="empresa" type="text" placeholder="Carnicería mayorista / Indumentaria / etc" required>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label for="mensaje">¿Qué querés resolver primero?</label>
+          <textarea id="mensaje" name="mensaje" placeholder="Ej: Necesito controlar stock y saber quién me debe. O quiero un bot que atienda WhatsApp solo."></textarea>
+        </div>
+
+        <button class="send-btn" type="submit">Enviar consulta</button>
+        <div class="send-hint">Se abre WhatsApp con el mensaje listo.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">
+    <div class="footer-brand-icon">AB</div>
+    <div>
+      <div style="line-height:1;color:var(--txt);">ALTOBYTE <span style="color:var(--accent)">SOLUTIONS</span></div>
+      <div style="color:var(--sub);font-size:.6rem;line-height:1.2;">Tecnología · Imagen · Automatización</div>
+    </div>
+  </div>
+  <div>© <span id="year"></span> ALTOBYTE SOLUTIONS. Todos los derechos reservados.</div>
+  <div>De la PC al ERP, del logo al bot.</div>
+  <div style="margin-top:.5rem;">
+    <a href="index.html#inicio">Volver al inicio</a>
+  </div>
+</footer>
+
+<script>
+// mobile nav
+(function(){
+  const burgerBtn = document.getElementById('burgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if(burgerBtn && mobileMenu){
+    burgerBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('show');
+    });
+    mobileMenu.querySelectorAll('a').forEach(a=>{
+      a.addEventListener('click',()=>mobileMenu.classList.remove('show'));
+    });
+  }
+})();
+
+// year
+(function(){
+  const y = document.getElementById('year');
+  if(y){ y.textContent = new Date().getFullYear(); }
+})();
+
+// canvas bg
+(function(){
+  const canvas = document.getElementById('grid-bg');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  let w, h, pixelRatio;
+  let offsetY = 0;
+  const spacing = 32;
+
+  function resize(){
+    pixelRatio = window.devicePixelRatio || 1;
+    w = canvas.clientWidth;
+    h = canvas.clientHeight;
+    canvas.width = w * pixelRatio;
+    canvas.height = h * pixelRatio;
+    ctx.scale(pixelRatio,pixelRatio);
+  }
+
+  function drawGrid(){
+    ctx.clearRect(0,0,w,h);
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = 'rgba(0,212,255,0.07)';
+
+    for(let x=0;x<w;x+=spacing){
+      ctx.beginPath();
+      ctx.moveTo(x,0);
+      ctx.lineTo(x,h);
+      ctx.stroke();
+    }
+    for(let y=-spacing;y<h+spacing;y+=spacing){
+      ctx.beginPath();
+      ctx.moveTo(0, y + (offsetY % spacing));
+      ctx.lineTo(w, y + (offsetY % spacing));
+      ctx.stroke();
+    }
+
+    const grad = ctx.createRadialGradient(w*0.5,h*0.4,0,w*0.5,h*0.4,w*0.6);
+    grad.addColorStop(0,'rgba(0,212,255,0.12)');
+    grad.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0,0,w,h);
+  }
+
+  function loop(){
+    offsetY += 0.3;
+    drawGrid();
+    requestAnimationFrame(loop);
+  }
+
+  resize();
+  loop();
+  window.addEventListener('resize',resize);
+})();
+
+// reveal
+(function(){
+  const revealables = document.querySelectorAll('.hidden-init');
+
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('reveal');
+        obs.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.2});
+
+  revealables.forEach(el=>obs.observe(el));
+})();
+
+// whatsapp form
+(function(){
+  const form = document.getElementById('contactForm');
+  if(!form) return;
+
+  const waNumber = "5493416018944"; // número sin + ni espacios
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const nombre = document.getElementById('nombre').value.trim();
+    const empresa = document.getElementById('empresa').value.trim();
+    const mensaje = document.getElementById('mensaje').value.trim();
+
+    const texto = [
+      "Hola ALTOBYTE SOLUTIONS 👋",
+      "Quiero ayuda con mi negocio.",
+      "",
+      "Nombre: " + nombre,
+      "Empresa / Rubro: " + empresa,
+      "Necesidad principal:",
+      mensaje,
+      "",
+      "Enviame una propuesta 👇"
+    ].join("\n");
+
+    const encoded = encodeURIComponent(texto);
+    const url = "https://wa.me/" + waNumber + "?text=" + encoded;
+    window.open(url, "_blank");
+  });
+})();
+</script>
+</body>
+</html>
